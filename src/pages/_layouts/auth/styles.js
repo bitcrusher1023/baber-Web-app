@@ -35,6 +35,12 @@ export const Content = styled.div`
       margin-bottom: 10px;
     }
 
+    span {
+      color: red;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    }
+
     button {
       margin-top: 5px;
       background: #fed35b;
