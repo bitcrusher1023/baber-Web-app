@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import logo from "../../assets/images/logo.svg";
 
+import FormInput from "../../components/FormInput/FormInput";
+
 export default function SignIn() {
   const { handleSubmit, register, errors } = useForm();
 
@@ -11,32 +13,32 @@ export default function SignIn() {
   return (
     <>
       <img src={logo} alt="BarberApp" />
+      <h1>BarberApp</h1>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          style={{ border: errors.email ? "1px solid red" : "none" }}
+        <FormInput
           type="email"
           name="email"
           placeholder="E-mail"
-          ref={register({
+          register={register({
             required: "Email é obrigatório",
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
               message: "Endereço de e-mail inválido"
             }
           })}
+          errors={errors["email"]}
         />
-        {errors.email && <span>{errors.email.message}</span>}
-        <input
-          style={{ border: errors.password ? "1px solid red" : "none" }}
+
+        <FormInput
           type="password"
           name="password"
           placeholder="Senha"
-          ref={register({
+          register={register({
             required: "Senha é obrigatório"
           })}
+          errors={errors["password"]}
         />
-        {errors.password && <span>{errors.password.message}</span>}
 
         <button type="submit">Entrar</button>
 

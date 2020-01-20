@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   height: 100%;
-  background: #222;
+  background: ${props => props.theme.color1};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,56 +11,54 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   width: 100%;
-  max-width: 350px;
+  max-width: 35rem;
   text-align: center;
-  background: #333;
-  padding: 20px;
-  border-radius: 5px;
+  background: ${props => props.theme.color2};
+  padding: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid ${props => props.theme.color3};
 
   img {
     width: 75%;
+    border: 1px solid ${props => props.theme.color3};
+    border-radius: 50%;
+    margin-bottom: 2rem;
+  }
+
+  h1 {
+    color: ${props => props.theme.color6};
+    margin-bottom: 1rem;
+  }
+  h3 {
+    color: ${props => props.theme.color5};
+    font-weight: lighter;
   }
 
   form {
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
-
-    input {
-      background: rgba(0, 0, 0, 0.5);
-      border: 0;
-      border-radius: 5px;
-      padding: 15px;
-      color: #fff;
-      margin-bottom: 10px;
-    }
-
-    span {
-      color: red;
-      margin-bottom: 10px;
-      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-    }
+    margin-top: 3rem;
 
     button {
-      margin-top: 5px;
-      background: #fed35b;
+      margin-top: 0.5rem;
+      background: ${props => props.theme.color4};
       font-weight: bold;
-      color: #000;
+      color: ${props => props.theme.color1};
       border: 0;
-      border-radius: 5px;
-      padding: 15px;
-      font-size: 16px;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      font-size: 1.6rem;
       transition: all 0.3s;
 
       &:hover {
-        background: #f4c730;
+        background: ${props => props.theme.color5};
       }
     }
 
     a {
-      color: #fff;
-      font-size: 15px;
-      margin-top: 15px;
+      color: ${props => props.theme.color6};
+      font-size: 1.5rem;
+      margin-top: 1.5rem;
     }
   }
 `;

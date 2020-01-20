@@ -14,6 +14,10 @@ export default createGlobalStyle`
         outline: 0;
     }
 
+    html {
+        font-size: 62.5%;
+    }
+
     html,body, #root {
         height: 100%;
 
@@ -25,7 +29,7 @@ export default createGlobalStyle`
     }
 
     body, input, button {
-        font: 14px 'Arimo', sans-serif;
+        font: 1.4rem 'Arimo', sans-serif;
     }
 
     a {
