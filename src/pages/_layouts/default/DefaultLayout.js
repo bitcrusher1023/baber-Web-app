@@ -1,7 +1,12 @@
 import React from "react";
-
+import Header from "../../../components/Header/Header";
 import { Container } from "./styles";
 
 export default function DefaultLayout({ children }) {
-  return <Container>{children}</Container>;
+  return (
+    <Container>
+      <Header />
+      {children}
+    </Container>
+  );
 }
