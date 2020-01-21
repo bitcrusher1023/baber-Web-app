@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -10,6 +10,8 @@ import logo from "../../assets/images/logo.svg";
 
 export default function SignIn() {
   const dispatch = useDispatch();
+  const loading = useSelector(state => state.auth.loading);
+
   const { handleSubmit, register, errors } = useForm();
 
   const onSubmit = ({ email, password }) => {
@@ -46,7 +48,7 @@ export default function SignIn() {
           errors={errors["password"]}
         />
 
-        <button type="submit">Entrar</button>
+        <button type="submit">{loading ? "Carregando..." : "Entrar"}</button>
 
         <Link to="/register">Não possui uma conta?</Link>
       </form>
