@@ -1,4 +1,4 @@
-import { takeLatest, call, put, all } from "redux-saga/effects";
+import { takeLatest, call, put, all, take } from "redux-saga/effects";
 import { toast } from "react-toastify";
 import api from "../../services/api";
 import history from "../../services/history";
@@ -19,6 +19,9 @@ export function* signIn({ payload }) {
       toast.error("Usuário não é prestador de serviços");
       return;
     }
+
+    // Adds user token to headers on axios requests
+    api.defaults.headers["Authorization"] = `Bearer ${token}`;
 
     yield put(signInSuccess(token, user));
 
@@ -47,7 +50,20 @@ export function* signUp({ payload }) {
   }
 }
 
+// Gets token from action dispatched - redux persist "persist/REHYDRATE"
+export function setToken({ payload }) {
+  if (!payload) return;
+
+  const { token } = payload.auth;
+
+  if (token) {
+    // Adds user token to headers on axios requests
+    api.defaults.headers["Authorization"] = `Bearer ${token}`;
+  }
+}
+
 export default all([
+  takeLatest("persist/REHYDRATE", setToken),
   takeLatest("@auth/SIGN_IN_REQUEST", signIn),
   takeLatest("@auth/SIGN_UP_REQUEST", signUp)
 ]);
