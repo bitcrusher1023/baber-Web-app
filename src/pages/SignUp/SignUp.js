@@ -1,14 +1,21 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import logo from "../../assets/images/logo.svg";
 
 import FormInput from "../../components/FormInput/FormInput";
+import { signUpRequest } from "../../redux/auth/authActions";
+
+import logo from "../../assets/images/logo.svg";
 
 export default function SignUp() {
+  const dispatch = useDispatch();
+
   const { handleSubmit, register, errors } = useForm();
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = ({ name, email, password }) => {
+    dispatch(signUpRequest(name, email, password));
+  };
 
   return (
     <>
@@ -21,12 +28,16 @@ export default function SignUp() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormInput
           type="text"
-          name="fullname"
+          name="name"
           placeholder="Nome completo"
           register={register({
-            required: "Nome completo é obrigatório"
+            required: "Nome completo é obrigatório",
+            pattern: {
+              value: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/g,
+              message: "Nome inválido"
+            }
           })}
-          errors={errors["fullname"]}
+          errors={errors["name"]}
         />
 
         <FormInput

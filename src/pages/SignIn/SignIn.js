@@ -7,7 +7,7 @@ import { signInRequest } from "../../redux/auth/authActions";
 import FormInput from "../../components/FormInput/FormInput";
 
 import logo from "../../assets/images/logo.svg";
-
+import { FiLoader } from "react-icons/fi";
 export default function SignIn() {
   const dispatch = useDispatch();
   const loading = useSelector(state => state.auth.loading);
@@ -48,7 +48,9 @@ export default function SignIn() {
           errors={errors["password"]}
         />
 
-        <button type="submit">{loading ? "Carregando..." : "Entrar"}</button>
+        <button type="submit">
+          {loading ? <FiLoader className="icon-spin" size={20} /> : "Entrar"}
+        </button>
 
         <Link to="/register">Não possui uma conta?</Link>
       </form>

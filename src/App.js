@@ -13,6 +13,8 @@ import { ThemeProvider } from "styled-components";
 import theme from "./styles/theme";
 import GlobalStyle from "./styles/global";
 
+import "./App.css";
+
 function App() {
   return (
     <Provider store={store}>
