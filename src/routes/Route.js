@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 import AuthLayout from "../pages/_layouts/auth/AuthLayout";
 import DefaultLayout from "../pages/_layouts/default/DefaultLayout";
 
@@ -9,16 +9,16 @@ export default function RouteWrapper({
   isPrivate = false,
   ...otherProps
 }) {
-  const signed = false;
+  const logged = useSelector(state => state.auth.logged);
 
-  if (!signed && isPrivate) {
+  if (!logged && isPrivate) {
     return <Redirect to="/" />;
   }
 
-  if (signed && !isPrivate) {
+  if (logged && !isPrivate) {
     return <Redirect to="/dashboard" />;
   }
-  const Layout = signed ? DefaultLayout : AuthLayout;
+  const Layout = logged ? DefaultLayout : AuthLayout;
 
   return (
     <Route

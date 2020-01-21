@@ -1,14 +1,20 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import logo from "../../assets/images/logo.svg";
 
+import { signInRequest } from "../../redux/auth/authActions";
 import FormInput from "../../components/FormInput/FormInput";
 
+import logo from "../../assets/images/logo.svg";
+
 export default function SignIn() {
+  const dispatch = useDispatch();
   const { handleSubmit, register, errors } = useForm();
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = ({ email, password }) => {
+    dispatch(signInRequest(email, password));
+  };
 
   return (
     <>
