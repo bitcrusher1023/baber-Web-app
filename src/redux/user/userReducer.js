@@ -11,6 +11,10 @@ export default function user(state = INITIAL_STATE, action) {
       return produce(state, draft => {
         draft.user = action.payload.user;
       });
+    case "@user/UPDATE_PROFILE_SUCCESS":
+      return produce(state, draft => {
+        draft.user = action.payload.user;
+      });
 
     default:
       return state;

@@ -1,9 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 
 import FormInput from "../../components/FormInput/FormInput";
+
+import { updateProfileRequest } from "../../redux/user/userActions";
 
 import { Container } from "./styles";
 
@@ -15,8 +16,7 @@ export default function Profile() {
   const { handleSubmit, register, watch, errors } = useForm();
 
   const onSubmit = data => {
-    // dispatch(signUpRequest(name, email, password));
-    console.log(data);
+    dispatch(updateProfileRequest(data));
   };
 
   return (
@@ -60,43 +60,41 @@ export default function Profile() {
           type="password"
           name="oldPassword"
           placeholder="Senha antiga"
-          register={register({
-            required: "Senha antiga é obrigatório"
-          })}
+          register={register}
           errors={errors["oldPassword"]}
         />
 
         <FormInput
           type="password"
-          name="newPassword"
+          name="password"
           placeholder="Senha nova"
           register={register({
-            required: "Senha nova é obrigatório",
+            // required: "Senha nova é obrigatório",
             minLength: {
               value: 6,
               message: "Senha deve conter pelo menos 6 caracteres"
             }
           })}
-          errors={errors["newPassword"]}
+          errors={errors["password"]}
         />
 
         <FormInput
           type="password"
-          name="confirmNewPassword"
+          name="confirmPassword"
           placeholder="Confirmação de senha nova"
           register={register({
-            required: "Confirmação de senha nova é obrigatório",
+            // required: "Confirmação de senha nova é obrigatório",
             minLength: {
               value: 6,
               message: "Senha deve conter pelo menos 6 caracteres"
             },
             validate: {
               validate: value =>
-                value === watch("newPassword") ||
+                value === watch("password") ||
                 "Confirmacao de senha deve ser igual a senha nova"
             }
           })}
-          errors={errors["confirmNewPassword"]}
+          errors={errors["confirmPassword"]}
         />
 
         <button type="submit">Atualizar perfil</button>
