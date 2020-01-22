@@ -2,10 +2,17 @@ import React from "react";
 
 import { Content } from "./styles";
 
-export default function FormInput({ register, errors, name, ...otherProps }) {
+export default function FormInput({
+  register,
+  errors,
+  name,
+  defaultValue,
+  ...otherProps
+}) {
   return (
     <Content>
       <input
+        defaultValue={defaultValue}
         name={name}
         {...otherProps}
         style={{

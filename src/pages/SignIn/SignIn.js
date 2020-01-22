@@ -8,6 +8,7 @@ import FormInput from "../../components/FormInput/FormInput";
 
 import logo from "../../assets/images/logo.svg";
 import { FiLoader } from "react-icons/fi";
+
 export default function SignIn() {
   const dispatch = useDispatch();
   const loading = useSelector(state => state.auth.loading);

@@ -21,14 +21,13 @@ export default createGlobalStyle`
         font-size: 62.5%;
     }
 
-    html,body, #root {
+    html, body, #root {
         height: 100%;
-
+        background:${props => props.theme.color1}
     }
 
     body {
         -webkit-font-smoothing: antialiased;
-
     }
 
     body, input, button {
