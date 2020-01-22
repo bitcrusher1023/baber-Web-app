@@ -14,11 +14,11 @@ export const Badge = styled.button`
     color: ${props => props.theme.color6};
     transition: all 0.3s;
 
-    &::hover {
+    &:hover {
       color: ${props => props.theme.color5};
     }
 
-    &::active {
+    &:active {
       transform: translateY(-0.5rem);
     }
   }
@@ -47,6 +47,8 @@ export const NotificationList = styled.div`
   background: ${props => props.theme.color4};
   border-radius: 0.4rem;
   padding: 1rem;
+  /* display based on prop Visible in component state */
+  display: ${props => (props.visible ? "block" : "none")};
 
   &::before {
     content: "";
@@ -85,6 +87,8 @@ export const Notification = styled.div`
     font-size: 1.2rem;
     opacity: 0.6;
     font-style: italic;
+    display: block;
+    margin-bottom: 0.5rem;
   }
 
   button {
@@ -92,9 +96,6 @@ export const Notification = styled.div`
     border: 0;
     background: none;
     color: ${props => props.theme.color8};
-    padding: 0 0.5rem;
-    margin: 0 0.5rem;
-    border-left: 1px solid ${props => props.theme.color3};
   }
 
   ${props =>
