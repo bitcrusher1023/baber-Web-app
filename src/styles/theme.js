@@ -5,5 +5,6 @@ export default {
   color4: "#fed35b",
   color5: "#f4c730",
   color6: "#fff",
-  color7: "pink"
+  color7: "pink",
+  color8: "#ff2e2e"
 };

@@ -20,7 +20,7 @@ export const Content = styled.div`
 
   img {
     width: 75%;
-    border: 1px solid ${props => props.theme.color3};
+    border: 2px solid ${props => props.theme.color3};
     border-radius: 50%;
     margin-bottom: 2rem;
   }
