@@ -1,22 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
+
+import api from "../../services/api";
 
 import FormInput from "../../components/FormInput/FormInput";
 
 import { updateProfileRequest } from "../../redux/user/userActions";
 
-import { Container } from "./styles";
+import { Container, ProfileAvatar } from "./styles";
 
 export default function Profile() {
   const dispatch = useDispatch();
+
+  const currentAvatar = useSelector(state => state.user.user.avatar);
+  const [file, setFile] = useState(currentAvatar.id);
+  const [preview, setPreview] = useState(currentAvatar.url);
 
   const profile = useSelector(state => state.user.user);
 
   const { handleSubmit, register, watch, errors } = useForm();
 
+  const handleAvatarChange = async e => {
+    const data = new FormData();
+    data.append("file", e.target.files[0]);
+    const response = await api.post("/files", data);
+
+    const { id, url } = response.data;
+
+    setFile(id);
+    setPreview(url);
+  };
+
   const onSubmit = data => {
-    dispatch(updateProfileRequest(data));
+    dispatch(updateProfileRequest({ ...data, avatar_id: file }));
   };
 
   return (
@@ -24,6 +41,26 @@ export default function Profile() {
       <h1>Atualizar Perfil</h1>
 
       <form onSubmit={handleSubmit(onSubmit)}>
+        <ProfileAvatar>
+          <label htmlFor="avatar">
+            <img
+              src={
+                preview ||
+                "https://api.adorable.io/avatars/60/abott@adorable.png"
+              }
+              alt="Avatar"
+            />
+            <input
+              type="file"
+              id="avatar"
+              name="avatar"
+              accept="image/*"
+              onChange={handleAvatarChange}
+              ref={register}
+            />
+          </label>
+        </ProfileAvatar>
+
         <FormInput
           type="text"
           name="name"

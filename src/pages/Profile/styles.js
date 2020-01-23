@@ -64,3 +64,29 @@ export const Container = styled.div`
         background: ${props => props.theme.color7};
       }
 `;
+
+export const ProfileAvatar = styled.div`
+  display: block;
+  text-align: center;
+  /* margin-bottom: 3rem; */
+
+  label {
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    img {
+      height: 12rem;
+      width: 12rem;
+      border-radius: 50%;
+      border: 0.3rem solid ${props => props.theme.color7};
+      background: ${props => props.theme.color3};
+    }
+
+    input {
+      display: none;
+    }
+  }
+`;
