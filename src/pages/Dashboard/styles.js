@@ -3,9 +3,18 @@ import styled from "styled-components";
 export const Container = styled.div`
   max-width: 60rem;
   margin: 50px auto;
-
+  background: ${props => props.theme.color2};
+  padding: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid ${props => props.theme.color3};
   display: flex;
   flex-direction: column;
+
+  h1 {
+    color: ${props => props.theme.color6};
+    align-self: center;
+    margin-bottom: 2rem;
+  }
 
   header {
     display: flex;
