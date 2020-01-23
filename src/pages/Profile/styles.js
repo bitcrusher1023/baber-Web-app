@@ -14,7 +14,6 @@ export const Container = styled.div`
 
   h1 {
     color: ${props => props.theme.color6};
-    margin-bottom: 1rem;
   }
 
   form {
@@ -66,9 +65,8 @@ export const Container = styled.div`
 `;
 
 export const ProfileAvatar = styled.div`
-  display: block;
-  text-align: center;
-  /* margin-bottom: 3rem; */
+  align-self: center;
+  margin-bottom: 2.5rem;
 
   label {
     cursor: pointer;
@@ -81,8 +79,8 @@ export const ProfileAvatar = styled.div`
       height: 12rem;
       width: 12rem;
       border-radius: 50%;
-      border: 0.3rem solid ${props => props.theme.color7};
-      background: ${props => props.theme.color3};
+      border: 0.3rem solid ${props => props.theme.color3};
+      background: ${props => props.theme.color1};
     }
 
     input {

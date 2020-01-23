@@ -7,6 +7,7 @@ import api from "../../services/api";
 import FormInput from "../../components/FormInput/FormInput";
 
 import { updateProfileRequest } from "../../redux/user/userActions";
+import { signOut } from "../../redux/auth/authActions";
 
 import { Container, ProfileAvatar } from "./styles";
 
@@ -137,7 +138,9 @@ export default function Profile() {
         <button type="submit">Atualizar perfil</button>
       </form>
 
-      <button type="submit">Sair da aplicação</button>
+      <button type="submit" onClick={() => dispatch(signOut())}>
+        Sair da aplicação
+      </button>
     </Container>
   );
 }
