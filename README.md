@@ -41,16 +41,16 @@ Creates the final build of the project to be deployed on the server.
 
 ### SignIn Page
 
-![Image of SingIn](https://ibb.co/LYqGvwp)
+![Image of SingIn](https://i.ibb.co/gmXn61g/signin.jpg)
 
 ### SignUp Page
 
-![Image of SignUp](https://ibb.co/d0YYgbT)
+![Image of SignUp](https://i.ibb.co/0jbbtB7/signup.jpg)
 
 ### Dashboard Page
 
-![Image of Dashboard](https://ibb.co/C6gdb5W)
+![Image of Dashboard](https://i.ibb.co/tzgfqM3/dashboard.jpg)
 
 ### Profile Page
 
-![Image of Profile](https://ibb.co/rskT2n3)
+![Image of Profile](https://i.ibb.co/GT7BQg9/profile.jpg)
